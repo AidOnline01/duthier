@@ -1,7 +1,9 @@
-import store from './store/index.js';
+import store from './store.js';
 
 function initApplication() {
-    console.log(store);
+    const question = store.getRandomWord();
+    const answers = store.getRandomTranslations(question.word, question.translation);
+    console.log(question, answers);
 }
 
 initApplication();
