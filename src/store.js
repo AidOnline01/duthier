@@ -1,5 +1,5 @@
-import nl from '@/dictionaries-test/nl.json';
-import en from '@/dictionaries-test/en.json';
+import nl from '@/dictionaries-full/nl.json';
+import en from '@/dictionaries-full/en.json';
 import storage from './storage';
 
 class Store {
