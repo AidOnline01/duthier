@@ -41,7 +41,7 @@ class Store {
 
   getRandomTranslations(word, translation) {
     const wordsPool = [...en.words];
-    const chosenWords = [];
+    let chosenWords = [];
 
     for(let i = 0; i < 5; i++) {
       const randomIndex = Math.floor(Math.random() * wordsPool.length);
@@ -51,6 +51,7 @@ class Store {
       if(chosenWord !== word) chosenWords.push(chosenWord);
     }
 
+    chosenWords = chosenWords.slice(0, 3);
     chosenWords.push(translation);
 
     return chosenWords.sort(() => 0.5 - Math.random());
@@ -62,6 +63,18 @@ class Store {
 
   getProgress() {
     return nl.words.length - this.state.activeWords.length;
+  }
+
+  countHits() {
+    let activeHitsCount = 0;
+
+    this.state.activeWords.forEach((word) => {
+      activeHitsCount += this.state.wordsProgress[word].hits;
+    });
+
+    let deadHits = (nl.words.length - this.state.activeWords.length) * 5;
+
+    return activeHitsCount + deadHits;
   }
 
   answer(word, answer) {

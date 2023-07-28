@@ -54,7 +54,7 @@ class Cli {
 
   showQuestionAndAnswers(question, answers) {
     console.log('');
-    console.log(`Translation for "${question.word}" is:`);
+    console.log(`"${question.word}":`);
     console.log(answers.join(' | '));
   }
 
@@ -87,9 +87,11 @@ class Cli {
   showProgress() {
     const totalCount = store.getTotalCount();
     const progress = store.getProgress();
+    const hits = store.countHits();
 
     console.log('');
     console.log(`Progress words: ${progress}/${totalCount}`);
+    console.log(`Progress hits: ${hits}/${totalCount * 5}`);
   }
 }
 
