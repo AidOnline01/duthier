@@ -4,27 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "createGame": "rollup src/main.js -o dist/index.js -f cjs",
-    "play": "node dist/index.js"
+    "createGame": "rollup --config rollup.config.js",
+    "play": "node dist/index.js",
+    "start": "npm run createGame && npm run play"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.22.9",
-    "@babel/core": "^7.22.9",
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
-    "@babel/preset-env": "^7.22.9",
-    "gulp": "^4.0.2",
-    "gulp-babel": "^8.0.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-rollup": "^2.17.0",
-    "rollup-stream": "^1.24.1",
-    "vinyl-source-stream": "^2.0.0"
-  },
-  "dependencies": {
-    "gulp-sourcemaps": "^3.0.0",
+    "@rollup/plugin-json": "^6.0.0",
     "rollup": "^3.27.0",
-    "vinyl-buffer": "^1.0.1"
+    "rollup-plugin-alias": "^2.2.0"
   }
 }

@@ -1,7 +1,7 @@
-import test from './test.js';
+import store from './store/index.js';
 
 function initApplication() {
-    test();
+    console.log(store);
 }
 
 initApplication();
