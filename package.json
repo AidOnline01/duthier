@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "createGame": "rm -rf ./dist && rollup --config rollup.config.js",
-    "play": "node dist/index.js",
-    "start": "npm run createGame && npm run play"
+    "play": "node dist/index.js"
   },
   "author": "",
   "license": "ISC",
