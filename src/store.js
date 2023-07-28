@@ -80,13 +80,17 @@ class Store {
   answer(word, answer) {
     const wordData = this.state.wordsProgress[word];
 
-    if(wordData.translation !== answer) return;
-
-    wordData.hits += 1;
-
-    if(wordData.hits >= 5) {
-      this.deleteWord(word);
+    if(wordData.translation === answer) {
+      wordData.hits += 1;
+  
+      if(wordData.hits >= 5) {
+        this.deleteWord(word);
+      }
     }
+    else {
+      wordData.hits = 0;
+    }
+
   }
 
   deleteWord(word) {

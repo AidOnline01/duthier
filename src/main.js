@@ -31,7 +31,8 @@ async function initApplication() {
         cli.showFeedback(chosenAnswer, question.translation);
     } while(progress < totalCount - 1);
 
-    console.log('GAME IS WON!!!!')
+    console.log('GAME IS WON!!!!');
+    process.exit();
 }
 
 initApplication();
