@@ -1,5 +1,6 @@
 import nl from '@/dictionaries-test/nl.json';
 import en from '@/dictionaries-test/en.json';
+import storage from './storage';
 
 class Store {
   constructor() {
@@ -12,8 +13,19 @@ class Store {
   }
 
   init() {
-    this.state.wordsProgress = this.mapWords();
-    this.state.activeWords = [...nl.words];
+    const savedProgress = storage.load();
+
+    if(savedProgress) {
+      console.log('');
+      console.log('Your game was successfully loaded from save file');
+
+      this.state.wordsProgress = savedProgress.wordsProgress;
+      this.state.activeWords = savedProgress.activeWords;
+    }
+    else {
+      this.state.wordsProgress = this.mapWords();
+      this.state.activeWords = [...nl.words];
+    }
   }
 
   mapWords() {
@@ -91,6 +103,7 @@ class Store {
       wordData.hits = 0;
     }
 
+    storage.save(this.state.activeWords, this.state.wordsProgress);
   }
 
   deleteWord(word) {

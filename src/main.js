@@ -9,6 +9,8 @@ async function initApplication() {
 
     do {
         progress = store.getProgress();
+        if(progress === totalCount) break;
+
         const question = store.getRandomWord();
         const answers = store.getRandomTranslations(question.word, question.translation);
 

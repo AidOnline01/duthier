@@ -93,6 +93,12 @@ class Cli {
     console.log(`Progress words: ${progress}/${totalCount}`);
     console.log(`Progress hits: ${hits}/${totalCount * 5}`);
   }
+
+  showThatGameWasLoadedFromSave() {
+    console.log('');
+    console.log('Your game was successfully loaded');
+    this.showProgress();
+  }
 }
 
 export default new Cli();
