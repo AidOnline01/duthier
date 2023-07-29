@@ -24,17 +24,17 @@ class Store {
     }
     else {
       this.state.wordsProgress = this.mapWords();
-      this.state.activeWords = [...nl.words];
+      this.state.activeWords = [...en.words];
     }
   }
 
   mapWords() {
     const wordsMap = {};
 
-    nl.words.forEach((word, index) => {
+    en.words.forEach((word, index) => {
         wordsMap[word] = {
             hits: 0,
-            translation: en.words[index]
+            translation: nl.words[index]
         };
     });
 
@@ -52,7 +52,7 @@ class Store {
   }
 
   getRandomTranslations(word, translation) {
-    const wordsPool = [...en.words];
+    const wordsPool = [...nl.words];
     let chosenWords = [];
 
     for(let i = 0; i < 5; i++) {
@@ -70,11 +70,11 @@ class Store {
   }
 
   getTotalCount() {
-    return nl.words.length;
+    return en.words.length;
   }
 
   getProgress() {
-    return nl.words.length - this.state.activeWords.length;
+    return en.words.length - this.state.activeWords.length;
   }
 
   countHits() {
@@ -84,7 +84,7 @@ class Store {
       activeHitsCount += this.state.wordsProgress[word].hits;
     });
 
-    let deadHits = (nl.words.length - this.state.activeWords.length) * 5;
+    let deadHits = (en.words.length - this.state.activeWords.length) * 5;
 
     return activeHitsCount + deadHits;
   }
